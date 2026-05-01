@@ -2,25 +2,27 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sergio Flores | Abogado & Project Manager en Energía</title>
 
-  <!-- ICONOS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- FUENTE -->
   <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #f4f4f4;
     }
 
-    /* HEADER */
     .header {
       position: relative;
-      height: 100vh;
+      min-height: 100vh;
+      padding: 40px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
     }
 
@@ -45,8 +47,6 @@
       z-index: 3;
       color: white;
       text-align: center;
-      top: 50%;
-      transform: translateY(-50%);
       max-width: 850px;
       margin: auto;
     }
@@ -62,30 +62,32 @@
     }
 
     h1 {
-      font-size: 44px;
+      font-size: clamp(28px, 5vw, 44px);
       margin-bottom: 20px;
       text-shadow: 0 4px 15px rgba(0,0,0,0.8);
     }
 
     .description,
     .description-secondary {
-      font-size: 21px;
+      font-size: clamp(16px, 2.5vw, 21px);
       line-height: 1.7;
       margin-bottom: 10px;
       text-shadow: 0 3px 10px rgba(0,0,0,0.8);
     }
 
     .description-secondary {
-      margin-bottom: 20px;
+      margin-bottom: 5px;
     }
 
     .tech {
       font-family: 'Source Code Pro', monospace;
-      font-size: 20px;
+      font-size: clamp(14px, 2vw, 20px);
       display: flex;
       justify-content: center;
       gap: 25px;
+      margin-top: 5px;
       margin-bottom: 40px;
+      flex-wrap: wrap;
     }
 
     .python { color: #3776AB; }
@@ -94,11 +96,11 @@
 
     .socials {
       position: absolute;
-      bottom: 25px;
+      bottom: calc(clamp(40px, 8vh, 80px) + 38px);
       width: 100%;
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 60px;
       z-index: 4;
     }
 
@@ -106,28 +108,36 @@
       color: white;
       font-size: 30px;
       text-decoration: none;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .socials a span {
+      font-size: 16px;
+      font-weight: 600;
     }
 
     .socials a:hover {
       transform: scale(1.2);
     }
 
-    /* SECCIONES */
     .section {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 60px auto;
-      padding: 0 20px;
+      padding: 0 16px;
     }
 
     .section h2 {
       text-align: center;
       margin-bottom: 30px;
-      font-size: 26px;
+      font-size: clamp(20px, 3vw, 26px);
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
 
@@ -146,7 +156,7 @@
 
     .card img {
       width: 100%;
-      height: 180px;
+      height: 200px;
       object-fit: cover;
     }
 
@@ -165,10 +175,56 @@
       line-height: 1.5;
     }
 
-    @media (max-width: 768px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
+    /* NUEVO ESTILO MODERNO VERDE */
+    .sector-tag {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #00c853, #00e676);
+      box-shadow: 0 4px 10px rgba(0, 200, 83, 0.3);
+      letter-spacing: 0.5px;
+    }
+
+    /* MODAL PDF */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+    }
+
+    .modal-content {
+      position: relative;
+      width: 90%;
+      height: 90%;
+      margin: 3% auto;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 28px;
+      color: black;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .modal iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
 
   </style>
@@ -207,20 +263,28 @@
     </div>
 
     <div class="socials">
+
+      <a href="#" id="openCV">
+        <i class="fas fa-file-lines"></i>
+        <span>CV</span>
+      </a>
+
       <a href="https://www.linkedin.com/in/ssftlaw/" target="_blank">
         <i class="fab fa-linkedin"></i>
       </a>
+
       <a href="mailto:sergioft@outlook.com">
         <i class="fas fa-envelope"></i>
       </a>
+
       <a href="https://x.com/Sergioftlaw" target="_blank">
         <i class="fab fa-x-twitter"></i>
       </a>
+
     </div>
 
   </div>
 
-  <!-- PROYECTOS PROFESIONALES -->
   <div class="section">
     <h2>Proyectos desarrollados en el sector energético</h2>
 
@@ -229,70 +293,88 @@
       <div class="card">
         <img src="images/permiso_de_generacion.jpg">
         <div class="card-content">
-          <h3>Obtención del permisos de  generación de energía eléctrica</h3>
-          <p>Gestión integral del proyecto de obtención del permiso de generación ante la CNE.</p>
+          <h3>Permiso de Generación de Energía Eléctrica</h3>
+          <p>Gestión integral del permiso de generación ante la autoridad competente, incluyendo análisis regulatorio, estructuración del proyecto e integración del expediente conforme al marco vigente.</p>
+          <span class="sector-tag">Sector Eléctrico</span>
         </div>
       </div>
 
       <div class="card">
         <img src="images/interconexion_portada.jpg">
         <div class="card-content">
-          <h3>Obtención del permiso de interconexión de una Central Eléctrica al SEN</h3>
-          <p>Análisis técnico-regulatorio y gestión de conexión ante CENACE.</p>
+          <h3>Interconexión de Centrales Eléctricas al SEN</h3>
+          <p>Gestión técnico-regulatoria del proceso de interconexión ante CENACE, incluyendo coordinación de estudios y cumplimiento de requerimientos técnicos conforme al Manual de Interconexión vigente.</p>
+          <span class="sector-tag">Sector Eléctrico</span>
         </div>
       </div>
 
       <div class="card">
         <img src="images/prefactibilidad.png">
         <div class="card-content">
-          <h3>Coordinación de la elaboración de analisis de prefactivilidad de conexión</h3>
-          <p>Evaluación de viabilidad técnica, legal y económica en proyectos energéticos.</p>
+          <h3>Prefactibilidad de Proyectos Energéticos</h3>
+          <p>Evaluación integral técnica, legal y económica para determinar la viabilidad de proyectos energéticos previo a su desarrollo.</p>
+          <span class="sector-tag">Sector Eléctrico</span>
         </div>
       </div>
 
       <div class="card">
         <img src="images/sen_redes.png">
         <div class="card-content">
-          <h3>Obtención del permiso de conexión de un centro de carga la SEN</h3>
-          <p>Estructuración de contratos EPC, PPA y suministro eléctrico.</p>
+          <h3>Conexión de Centros de Carga al SEN</h3>
+          <p>Gestión del proceso de conexión conforme a la regulación aplicable, incluyendo análisis de modalidad, integración documental y acompañamiento ante autoridades y operadores.</p>
+          <span class="sector-tag">Sector Eléctrico</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/electrolineras.png">
+        <div class="card-content">
+          <h3>Infraestructura de Electromovilidad (Electrolineras)</h3>
+          <p>Asesoría y gestión para la instalación y operación de electrolineras, incluyendo análisis de conexión, cumplimiento normativo y estructuración del proyecto conforme al marco eléctrico, urbano y ambiental vigente.</p>
+          <span class="sector-tag">Sector Movilidad Energética</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/gasolinera.png">
+        <div class="card-content">
+          <h3>Permiso de Expendio al Público de Petrolíferos</h3>
+          <p>Gestión integral del permiso para expendio en estaciones de servicio, conforme al marco vigente aplicable a petrolíferos, incluyendo integración del expediente técnico, cumplimiento ambiental, seguridad industrial y requisitos regulatorios establecidos por la Comisión Nacional de Energía.</p>
+          <span class="sector-tag">Sector Hidrocarburos</span>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- PROYECTOS TÉCNICOS -->
-  <div class="section">
-    <h2>Proyectos Técnicos y Desarrollo</h2>
-
-    <div class="grid">
-
-      <div class="card">
-        <img src="https://via.placeholder.com/400x200">
-        <div class="card-content">
-          <h3>Aplicaciones Mobile (Flutter)</h3>
-          <p>Desarrollo de apps móviles enfocadas en productividad.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="https://via.placeholder.com/400x200">
-        <div class="card-content">
-          <h3>Herramientas en Python</h3>
-          <p>Automatización, análisis de datos y scripts especializados.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="https://via.placeholder.com/400x200">
-        <div class="card-content">
-          <h3>Desarrollo Web</h3>
-          <p>Diseño y desarrollo de interfaces web profesionales.</p>
-        </div>
-      </div>
-
+  <!-- MODAL CV -->
+  <div id="cvModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeCV">&times;</span>
+      <iframe src="assets/cv/cvsergio.pdf"></iframe>
     </div>
   </div>
+
+  <script>
+    const openBtn = document.getElementById("openCV");
+    const modal = document.getElementById("cvModal");
+    const closeBtn = document.getElementById("closeCV");
+
+    openBtn.onclick = function(e) {
+      e.preventDefault();
+      modal.style.display = "block";
+    }
+
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
 
 </body>
 </html>
