@@ -102,6 +102,7 @@
       justify-content: center;
       gap: 60px;
       z-index: 4;
+      flex-wrap: wrap;
     }
 
     .socials a {
@@ -131,9 +132,47 @@
 
     .section h2 {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       font-size: clamp(20px, 3vw, 26px);
     }
+
+    /* IDENTIFICADOR GENERAL DEL SECTOR */
+
+    .sector-header-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .sector-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: 14px;
+      background: rgba(250, 193, 7, 0.10);
+      border: 1px solid rgba(255, 193, 7, 0.25);
+      color: #d4a000;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .sector-header i {
+      font-size: 14px;
+    }
+
+    .sector-line {
+  flex: 1;
+  height: 1px;
+
+  background: linear-gradient(
+    to right,
+    rgba(255, 193, 7, 0.45),
+    rgba(255, 193, 7, 0.05)
+  );
+}
 
     .grid {
       display: grid;
@@ -147,6 +186,12 @@
       overflow: hidden;
       box-shadow: 0 5px 15px rgba(0,0,0,0.08);
       transition: 0.3s ease;
+      cursor: pointer;
+
+      display: flex;
+      flex-direction: column;
+      
+      height: 100%;
     }
 
     .card:hover {
@@ -162,34 +207,69 @@
 
     .card-content {
       padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
     .card h3 {
       margin-bottom: 8px;
       font-size: 18px;
+      line-height: 1.4;
     }
 
     .card p {
       font-size: 14px;
       color: #555;
       line-height: 1.5;
+      flex-grow: 1;
+      margin-bottom: 18px;
     }
 
-    /* NUEVO ESTILO MODERNO VERDE */
-    .sector-tag {
-      display: inline-block;
-      margin-top: 10px;
-      font-size: 11px;
-      font-weight: 600;
-      color: #fff;
-      padding: 6px 12px;
-      border-radius: 20px;
+    /* BOTÓN VISUAL MI PARTICIPACIÓN */
+
+    .participacion-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+
+      margin-top: 16px;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      color: white;
+
+      padding: 11px 18px;
+
+      border-radius: 14px;
+
+      width: fit-content;
+
       background: linear-gradient(135deg, #00c853, #00e676);
-      box-shadow: 0 4px 10px rgba(0, 200, 83, 0.3);
-      letter-spacing: 0.5px;
+
+      box-shadow:
+        0 0 12px rgba(0, 230, 118, 0.45),
+        0 6px 18px rgba(0, 200, 83, 0.28);
+
+      transition: all 0.28s ease;
+    }
+
+    .participacion-btn i {
+      font-size: 13px;
+    }
+
+    .card:hover .participacion-btn {
+
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 0 18px rgba(0, 230, 118, 0.75),
+        0 10px 24px rgba(0, 200, 83, 0.38);
     }
 
     /* MODAL PDF */
+
     .modal {
       display: none;
       position: fixed;
@@ -227,6 +307,29 @@
       border: none;
     }
 
+    /* RESPONSIVE */
+
+    @media (max-width: 768px) {
+
+      .socials {
+        gap: 30px;
+      }
+
+      .participacion-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .sector-header-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .sector-line {
+        width: 100%;
+      }
+    }
+
   </style>
 </head>
 
@@ -251,7 +354,7 @@
       </p>
 
       <p class="description-secondary">
-        Desarrollador mobile & web y entusiasta de la programación en mi tiempo libre.
+        En mi tiempo libre fut, padel, downhill y entusiasta de la programación web & mobile.
       </p>
 
       <div class="tech">
@@ -286,25 +389,75 @@
   </div>
 
   <div class="section">
+
     <h2>Proyectos desarrollados en el sector energético</h2>
+
+    <div class="sector-header-wrapper">
+
+      <div class="sector-header">
+        <i class="fas fa-bolt"></i>
+        Sector Eléctrico
+      </div>
+
+      <div class="sector-line"></div>
+
+    </div>
 
     <div class="grid">
 
       <div class="card">
         <img src="images/permiso_de_generacion.jpg">
         <div class="card-content">
-          <h3>Permiso de Generación de Energía Eléctrica</h3>
-          <p>Gestión integral del permiso de generación ante la autoridad competente, incluyendo análisis regulatorio, estructuración del proyecto e integración del expediente conforme al marco vigente.</p>
-          <span class="sector-tag">Sector Eléctrico</span>
+          <h3>Permiso de Generación e interconexión al SEN</h3>
+          <p>Gestión integral del permiso de generación y del proceso de interconexión ante el CENACE, incluyendo la estructuración regulatoria del proyecto, la integración del expediente técnico-legal y la coordinación de estudios de impacto al sistema, con dominio del Manual de Interconexión, el código de red y la Ley del Sector Eléctrico.</p>
+
+          <div class="participacion-btn">
+            <i class="fas fa-user"></i>
+            Mi participación
+          </div>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/Conexion_Centro_de_Carga_al_SEN.png">
+        <div class="card-content">
+          <h3>Conexión de centros de carga al SEN</h3>
+          <p>Gestión del proceso de conexión al Sistema Eléctrico Nacional, desde la definición de la modalidad de suministro más conveniente hasta la inscripción en el Registro Único de Centros de Carga (RUC), coordinando los requerimientos técnicos, documentales y regulatorios ante CENACE y la CNE.</p>
+
+          <div class="participacion-btn">
+            <i class="fas fa-user"></i>
+            Mi participación
+          </div>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/Suministro_calificado.png">
+        <div class="card-content">
+          <h3>Suministro calificado y Mercado Eléctrico Mayorista</h3>
+          <p>Obtención de permisos de comercialización en modalidad de Suministro Calificado, registro como Comercializadora no Suministradora y habilitación de Usuarios Calificados Participantes del Mercado. Asesoría en el cumplimiento de las obligaciones operativas y de reporte ante el MEM.</p>
+
+          <div class="participacion-btn">
+            <i class="fas fa-user"></i>
+            Mi participación
+          </div>
+
         </div>
       </div>
 
       <div class="card">
         <img src="images/interconexion_portada.jpg">
         <div class="card-content">
-          <h3>Interconexión de Centrales Eléctricas al SEN</h3>
-          <p>Gestión técnico-regulatoria del proceso de interconexión ante CENACE, incluyendo coordinación de estudios y cumplimiento de requerimientos técnicos conforme al Manual de Interconexión vigente.</p>
-          <span class="sector-tag">Sector Eléctrico</span>
+          <h3>Conexión y derechos de usuarios finales</h3>
+          <p>GAsesoría en incrementos de carga, estructuración y negociación de operaciones de compraventa y cesión de derechos de demanda eléctrica (kVAs), y cumplimiento de obligaciones ante la CFE y el Código de Red, con atención a las implicaciones contractuales y regulatorias para cada perfil de consumo.</p>
+
+          <div class="participacion-btn">
+            <i class="fas fa-user"></i>
+            Mi participación
+          </div>
+
         </div>
       </div>
 
@@ -313,7 +466,12 @@
         <div class="card-content">
           <h3>Prefactibilidad de Proyectos Energéticos</h3>
           <p>Evaluación integral técnica, legal y económica para determinar la viabilidad de proyectos energéticos previo a su desarrollo.</p>
-          <span class="sector-tag">Sector Eléctrico</span>
+
+          <div class="participacion-btn">
+            <i class="fas fa-user"></i>
+            Mi participación
+          </div>
+
         </div>
       </div>
 
@@ -322,7 +480,12 @@
         <div class="card-content">
           <h3>Conexión de Centros de Carga al SEN</h3>
           <p>Gestión del proceso de conexión conforme a la regulación aplicable, incluyendo análisis de modalidad, integración documental y acompañamiento ante autoridades y operadores.</p>
-          <span class="sector-tag">Sector Eléctrico</span>
+
+          <div class="participacion-btn">
+            <i class="fas fa-user"></i>
+            Mi participación
+          </div>
+
         </div>
       </div>
 
@@ -331,16 +494,97 @@
         <div class="card-content">
           <h3>Infraestructura de Electromovilidad (Electrolineras)</h3>
           <p>Asesoría y gestión para la instalación y operación de electrolineras, incluyendo análisis de conexión, cumplimiento normativo y estructuración del proyecto conforme al marco eléctrico, urbano y ambiental vigente.</p>
-          <span class="sector-tag">Sector Movilidad Energética</span>
+
+          <div class="participacion-btn">
+            <i class="fas fa-user"></i>
+            Mi participación
+          </div>
+
         </div>
       </div>
+
+      <div class="card">
+        <img src="images/Autoconsumo.png">
+        <div class="card-content">
+          <h3>Autoconsumo, abasto aislado y generación distribuida</h3>
+          <p>Soporte jurídico para proyectos de generación en sitio bajo los esquemas de autoconsumo interconectado y generación distribuida (centrales menores a 0.7 MW exentas de permiso) y abasto aislado, incluyendo sistemas BESS y microredes.</p>
+
+          <div class="participacion-btn">
+            <i class="fas fa-user"></i>
+            Mi participación
+          </div>
+
+        </div>
+      </div>
+
+      </div>
+
+<div class="sector-header-wrapper" style="margin-top: 60px;">
+
+  <div class="sector-header hidrocarburos">
+    <i class="fas fa-fire"></i>
+    Sector Hidrocarburos
+  </div>
+
+  <div class="sector-line"></div>
+
+</div>
+
+<div class="grid">
 
       <div class="card">
         <img src="images/gasolinera.png">
         <div class="card-content">
           <h3>Permiso de Expendio al Público de Petrolíferos</h3>
-          <p>Gestión integral del permiso para expendio en estaciones de servicio, conforme al marco vigente aplicable a petrolíferos, incluyendo integración del expediente técnico, cumplimiento ambiental, seguridad industrial y requisitos regulatorios establecidos por la Comisión Nacional de Energía.</p>
-          <span class="sector-tag">Sector Hidrocarburos</span>
+          <p>Gestión integral del expediente técnico, ambiental y de seguridad industrial para la obtención del permiso de expendio al público, así como del permiso de despacho para autoconsumo de petrolíferos, incluyendo la preparación de la solicitud, atención de prevenciones y seguimiento hasta su resolución.</p>
+
+          <div class="participacion-btn">
+            <i class="fas fa-user"></i>
+            Mi participación
+          </div>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/Transporte_gas.png">
+        <div class="card-content">
+          <h3>Transporte y distribución de gas natural</h3>
+          <p>Asesoría regulatoria para el desarrollo de proyectos de transporte por gasoducto, almacenamiento y distribución de gas natural, incluyendo la obtención de los permisos correspondientes, la negociación de acceso abierto a infraestructura y el cumplimiento de las disposiciones del Plan Quinquenal de Gas Natural 2025–2029.</p>
+
+          <div class="participacion-btn">
+            <i class="fas fa-user"></i>
+            Mi participación
+          </div>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/Contratos_de_comercializacion.png">
+        <div class="card-content">
+          <h3>Contratos de comercialización de gas natural</h3>
+          <p>Evaluación jurídica de alternativas de abastecimiento y negociación de contratos de compraventa de gas natural, con atención a los mecanismos de precio, condiciones de entrega, asignación de riesgos regulatorios y alineación con las obligaciones del permiso de comercialización del vendedor.</p>
+
+          <div class="participacion-btn">
+            <i class="fas fa-user"></i>
+            Mi participación
+          </div>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/Cumplimineto_hidrocarburos.png">
+        <div class="card-content">
+          <h3>Cumplimiento regulatorio en hidrocarburos</h3>
+          <p>Seguimiento al cumplimiento de obligaciones de permisionarios, incluyendo la migración y reexpedición de títulos emitidos bajo el régimen anterior, el reporte periódico de operaciones de comercialización y la adecuación a los plazos y requisitos establecidos en las disposiciones transitorias del nuevo marco normativo.</p>
+
+          <div class="participacion-btn">
+            <i class="fas fa-user"></i>
+            Mi participación
+          </div>
+
         </div>
       </div>
 
@@ -348,14 +592,21 @@
   </div>
 
   <!-- MODAL CV -->
+
   <div id="cvModal" class="modal">
+
     <div class="modal-content">
+
       <span class="close" id="closeCV">&times;</span>
+
       <iframe src="assets/cv/cvsergio.pdf"></iframe>
+
     </div>
+
   </div>
 
   <script>
+
     const openBtn = document.getElementById("openCV");
     const modal = document.getElementById("cvModal");
     const closeBtn = document.getElementById("closeCV");
@@ -374,6 +625,7 @@
         modal.style.display = "none";
       }
     }
+
   </script>
 
 </body>
