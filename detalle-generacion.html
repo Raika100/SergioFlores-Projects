@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle del Proyecto | Sergio Flores</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(0,200,83,0.08), transparent 30%),
+        radial-gradient(circle at top right, rgba(255,193,7,0.08), transparent 30%),
+        #0d1117;
+      color:white;
+      min-height:100vh;
+    }
+
+    .page-wrapper{
+      width:100%;
+      max-width:1800px;
+      margin:auto;
+      padding:40px 24px 80px;
+    }
+
+    /* TOP BAR */
+
+    .top-bar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:35px;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .back-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:#ffd54f;
+      text-decoration:none;
+      font-weight:700;
+      transition:0.3s;
+    }
+
+    .back-btn:hover{
+      transform:translateX(-4px);
+    }
+
+    .participacion-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 20px;
+      border-radius:14px;
+      background:linear-gradient(135deg,#00c853,#00e676);
+      color:white;
+      font-size:14px;
+      font-weight:700;
+
+      box-shadow:
+        0 0 14px rgba(0,230,118,0.55),
+        0 8px 22px rgba(0,200,83,0.28);
+    }
+
+    /* LAYOUT */
+
+    .layout{
+      display:grid;
+      grid-template-columns:360px 1fr;
+      gap:32px;
+      align-items:start;
+    }
+
+    /* SIDEBAR */
+
+    .sidebar{
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:24px;
+      padding:28px;
+      backdrop-filter:blur(14px);
+      position:sticky;
+      top:24px;
+    }
+
+    .sidebar-title{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin-bottom:22px;
+    }
+
+    .sidebar-title i{
+      color:#ffd54f;
+      font-size:22px;
+    }
+
+    .sidebar-title h2{
+      font-size:30px;
+      line-height:1.2;
+    }
+
+    .sidebar-description{
+      color:rgba(255,255,255,0.72);
+      line-height:1.8;
+      margin-bottom:28px;
+      font-size:15px;
+    }
+
+    .info-list{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .info-item{
+      display:flex;
+      align-items:flex-start;
+      gap:16px;
+    }
+
+    .info-icon{
+      width:46px;
+      height:46px;
+      min-width:46px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(0,200,83,0.12);
+      color:#00e676;
+      font-size:18px;
+    }
+
+    .info-item h4{
+      margin-bottom:6px;
+      font-size:16px;
+    }
+
+    .info-item p{
+      color:rgba(255,255,255,0.68);
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    .why-card{
+      margin-top:34px;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:20px;
+      padding:22px;
+    }
+
+    .why-card h3{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:18px;
+      color:#ffd54f;
+    }
+
+    /* MAIN */
+
+    .project-container{
+      width:100%;
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:28px;
+      overflow:hidden;
+      backdrop-filter:blur(14px);
+    }
+
+    /* HERO */
+
+    .hero{
+      position:relative;
+      display:grid;
+      grid-template-columns:1.2fr 1fr;
+      gap:30px;
+      padding:28px;
+      align-items:center;
+    }
+
+    .hero img{
+      width:100%;
+      height:420px;
+      object-fit:cover;
+      border-radius:22px;
+    }
+
+    .hero-content h1{
+      font-size:clamp(34px,4vw,54px);
+      line-height:1.08;
+      margin-bottom:18px;
+    }
+
+    .sector-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:22px;
+      padding:10px 18px;
+      border-radius:999px;
+      background:rgba(255,193,7,0.12);
+      border:1px solid rgba(255,193,7,0.22);
+      color:#ffd54f;
+      font-weight:700;
+      font-size:14px;
+    }
+
+    .hero-content p{
+      color:rgba(255,255,255,0.74);
+      line-height:1.9;
+      font-size:16px;
+    }
+
+    /* META */
+
+    .meta-grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:18px;
+      padding:0 28px 28px;
+    }
+
+    .meta-card{
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:18px;
+      padding:18px;
+    }
+
+    .meta-card i{
+      color:#ffd54f;
+      margin-bottom:14px;
+      font-size:18px;
+    }
+
+    .meta-card h5{
+      margin-bottom:8px;
+      font-size:12px;
+      color:rgba(255,255,255,0.7);
+      text-transform:uppercase;
+      letter-spacing:0.5px;
+    }
+
+    .meta-card p{
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    /* CONTENT GRID */
+
+    .content-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:22px;
+      padding:0 28px 28px;
+    }
+
+    .content-card{
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:22px;
+      padding:24px;
+    }
+
+    .content-card h3{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:22px;
+      font-size:20px;
+    }
+
+    .content-card h3 i{
+      color:#00e676;
+    }
+
+    .content-card ul{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      padding-left:18px;
+    }
+
+    .content-card li{
+      color:rgba(255,255,255,0.78);
+      line-height:1.8;
+    }
+
+    /* SKILLS */
+
+    .skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .skill{
+      padding:10px 14px;
+      border-radius:12px;
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.08);
+      font-size:13px;
+      font-weight:600;
+    }
+
+    /* EVIDENCE */
+
+    .evidence{
+      padding:0 28px 32px;
+    }
+
+    .evidence-card{
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:22px;
+      padding:26px;
+    }
+
+    .evidence-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+      margin-bottom:24px;
+    }
+
+    .evidence-header h3{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .document-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:18px;
+    }
+
+    .doc-item{
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:16px;
+      padding:18px;
+      text-align:center;
+      transition:0.3s;
+      cursor:pointer;
+    }
+
+    .doc-item:hover{
+      transform:translateY(-4px);
+      border-color:rgba(0,230,118,0.35);
+    }
+
+    .doc-item i{
+      font-size:24px;
+      margin-bottom:12px;
+      color:#00e676;
+    }
+
+    .doc-item p{
+      font-size:14px;
+      color:rgba(255,255,255,0.72);
+      line-height:1.5;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width:1280px){
+
+      .layout{
+        grid-template-columns:1fr;
+      }
+
+      .sidebar{
+        position:relative;
+        top:0;
+      }
+
+      .meta-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media (max-width:980px){
+
+      .hero{
+        grid-template-columns:1fr;
+      }
+
+      .content-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:640px){
+
+      .page-wrapper{
+        padding:20px 14px 60px;
+      }
+
+      .sidebar{
+        padding:22px;
+      }
+
+      .hero{
+        padding:18px;
+      }
+
+      .hero img{
+        height:260px;
+      }
+
+      .meta-grid{
+        grid-template-columns:1fr;
+        padding:0 18px 18px;
+      }
+
+      .content-grid{
+        padding:0 18px 18px;
+      }
+
+      .evidence{
+        padding:0 18px 22px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="page-wrapper">
+
+    <div class="top-bar">
+
+      <a href="index.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i>
+        Volver a proyectos
+      </a>
+
+      <div class="participacion-btn">
+        <i class="fas fa-user"></i>
+        Mi participación
+      </div>
+
+    </div>
+
+    <div class="layout">
+
+      <!-- SIDEBAR -->
+
+      <aside class="sidebar">
+
+        <div class="sidebar-title">
+          <i class="fas fa-briefcase"></i>
+          <h2>Resumen Ejecutivo</h2>
+        </div>
+
+        <p class="sidebar-description">
+          Proyecto enfocado en la gestión regulatoria e interconexión de infraestructura energética ante autoridades del sector eléctrico mexicano.
+        </p>
+
+        <div class="info-list">
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+
+            <div>
+              <h4>Tipo de proyecto</h4>
+              <p>Central eléctrica e infraestructura de interconexión al SEN.</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-scale-balanced"></i>
+            </div>
+
+            <div>
+              <h4>Complejidad regulatoria</h4>
+              <p>Alta coordinación técnica, legal y regulatoria con múltiples stakeholders.</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-building-columns"></i>
+            </div>
+
+            <div>
+              <h4>Autoridades involucradas</h4>
+              <p>CENACE, autoridades regulatorias, ingeniería y especialistas técnicos.</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+
+            <div>
+              <h4>Impacto del proyecto</h4>
+              <p>Mitigación de riesgos regulatorios y estructuración integral del expediente.</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-users"></i>
+            </div>
+
+            <div>
+              <h4>Stakeholders</h4>
+              <p>Desarrollador, ingeniería, consultores técnicos y operadores del sistema.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="why-card">
+
+          <h3>
+            <i class="fas fa-diagram-project"></i>
+            KPIs del proyecto
+          </h3>
+
+          <p style="margin-bottom:14px; color:rgba(255,255,255,0.72); line-height:1.7;">
+            Coordinación multidisciplinaria y seguimiento regulatorio integral.
+          </p>
+
+          <div class="skills">
+
+            <div class="skill">+120 documentos</div>
+            <div class="skill">0 observaciones críticas</div>
+            <div class="skill">Cumplimiento regulatorio</div>
+            <div class="skill">Project Management</div>
+            <div class="skill">Stakeholder Management</div>
+            <div class="skill">Due Diligence</div>
+
+          </div>
+
+        </div>
+
+      </aside>
+
+      <!-- MAIN -->
+
+      <main class="project-container">
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+          <img src="images/permiso_de_generacion.jpg" alt="Proyecto energético">
+
+          <div class="hero-content">
+
+            <div class="sector-badge">
+              <i class="fas fa-bolt"></i>
+              Sector Eléctrico
+            </div>
+
+            <h1>Permiso de Generación e interconexión al SEN</h1>
+
+            <p>
+              Gestión integral del permiso de generación y del proceso de interconexión ante el CENACE, incluyendo la estructuración regulatoria del proyecto, la integración del expediente técnico-legal y la coordinación de estudios de impacto al sistema, con dominio del Manual de Interconexión, el código de red y la Ley del Sector Eléctrico.
+            </p>
+
+          </div>
+
+        </section>
+
+        <!-- META -->
+
+        <section class="meta-grid">
+
+          <div class="meta-card">
+            <i class="fas fa-building"></i>
+            <h5>Cliente / Contraparte</h5>
+            <p>Desarrollador de proyectos energéticos</p>
+          </div>
+
+          <div class="meta-card">
+            <i class="fas fa-calendar"></i>
+            <h5>Periodo</h5>
+            <p>2024 - 2025</p>
+          </div>
+
+          <div class="meta-card">
+            <i class="fas fa-location-dot"></i>
+            <h5>Ubicación</h5>
+            <p>México</p>
+          </div>
+
+          <div class="meta-card">
+            <i class="fas fa-industry"></i>
+            <h5>Tipo de proyecto</h5>
+            <p>Energía Renovable Utility-Scale</p>
+          </div>
+
+          <div class="meta-card">
+            <i class="fas fa-user"></i>
+            <h5>Mi rol</h5>
+            <p>Abogado & Project Manager</p>
+          </div>
+
+        </section>
+
+        <!-- CONTENT -->
+
+        <section class="content-grid">
+
+          <div class="content-card">
+
+            <h3>
+              <i class="fas fa-user-check"></i>
+              Mi rol y responsabilidades
+            </h3>
+
+            <ul>
+              <li>Lideré la estructuración regulatoria integral del proyecto.</li>
+              <li>Coordiné requerimientos técnicos y documentales ante autoridades.</li>
+              <li>Gestioné la integración del expediente técnico-legal.</li>
+              <li>Supervisé la interacción con equipos multidisciplinarios.</li>
+              <li>Di seguimiento regulatorio hasta la resolución del permiso.</li>
+            </ul>
+
+          </div>
+
+          <div class="content-card">
+
+            <h3>
+              <i class="fas fa-chart-column"></i>
+              Resultados e impacto
+            </h3>
+
+            <ul>
+              <li>Interconexión gestionada conforme a regulación aplicable.</li>
+              <li>Reducción de riesgos regulatorios y documentales.</li>
+              <li>Coordinación exitosa de estudios de impacto al sistema.</li>
+              <li>Integración completa del expediente para presentación.</li>
+              <li>Optimización de tiempos de seguimiento y respuesta.</li>
+            </ul>
+
+          </div>
+
+          <div class="content-card">
+
+            <h3>
+              <i class="fas fa-gears"></i>
+              Alcance y actividades clave
+            </h3>
+
+            <ul>
+              <li>Análisis de viabilidad regulatoria.</li>
+              <li>Coordinación con ingeniería y especialistas técnicos.</li>
+              <li>Atención de requerimientos y observaciones.</li>
+              <li>Seguimiento regulatorio y gestión documental.</li>
+              <li>Revisión estratégica del cumplimiento normativo.</li>
+            </ul>
+
+          </div>
+
+          <div class="content-card">
+
+            <h3>
+              <i class="fas fa-scale-balanced"></i>
+              Marco regulatorio / normativo
+            </h3>
+
+            <ul>
+              <li>Ley del Sector Eléctrico</li>
+              <li>Código de Red</li>
+              <li>Manual de Interconexión del CENACE</li>
+              <li>Regulación técnica aplicable</li>
+              <li>Disposiciones administrativas correspondientes</li>
+            </ul>
+
+          </div>
+
+          <div class="content-card" style="grid-column:1 / -1;">
+
+            <h3>
+              <i class="fas fa-lightbulb"></i>
+              Habilidades aplicadas
+            </h3>
+
+            <div class="skills">
+
+              <div class="skill">Project Management</div>
+              <div class="skill">Derecho Energético</div>
+              <div class="skill">Regulación Eléctrica</div>
+              <div class="skill">Stakeholder Management</div>
+              <div class="skill">Negociación</div>
+              <div class="skill">Compliance</div>
+              <div class="skill">Coordinación Multidisciplinaria</div>
+              <div class="skill">Análisis Técnico-Legal</div>
+              <div class="skill">Resolución de Problemas</div>
+              <div class="skill">Liderazgo</div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- EVIDENCE -->
+
+        <section class="evidence">
+
+          <div class="evidence-card">
+
+            <div class="evidence-header">
+
+              <h3>
+                <i class="fas fa-file-lines"></i>
+                Documentación / evidencia
+              </h3>
+
+              <div class="participacion-btn">
+                <i class="fas fa-folder-open"></i>
+                Ver documentos
+              </div>
+
+            </div>
+
+            <div class="document-grid">
+
+              <div class="doc-item">
+                <i class="fas fa-file-pdf"></i>
+                <p>Expediente técnico-legal</p>
+              </div>
+
+              <div class="doc-item">
+                <i class="fas fa-file-contract"></i>
+                <p>Contrato de interconexión</p>
+              </div>
+
+              <div class="doc-item">
+                <i class="fas fa-chart-area"></i>
+                <p>Estudios de impacto al sistema</p>
+              </div>
+
+              <div class="doc-item">
+                <i class="fas fa-file-signature"></i>
+                <p>Resolución y permisos</p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </main>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
